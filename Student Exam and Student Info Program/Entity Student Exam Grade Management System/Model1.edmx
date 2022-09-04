@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbStudentsAndExamsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLEXAM">
+          <Key>
+            <PropertyRef Name="EXGRID" />
+          </Key>
+          <Property Name="EXGRID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STD" Type="int" />
+          <Property Name="SUB" Type="int" />
+          <Property Name="EXAM1" Type="smallint" />
+          <Property Name="EXAM2" Type="smallint" />
+          <Property Name="EXAM3" Type="smallint" />
+          <Property Name="AVRG" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="STAT" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLSTUDENTS">
+          <Key>
+            <PropertyRef Name="STUDENTNUMBER" />
+          </Key>
+          <Property Name="STUDENTNUMBER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="50" />
+          <Property Name="STUDENT-PHOTO" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TBLSUBJECTS">
+          <Key>
+            <PropertyRef Name="SUBJECT ID" />
+          </Key>
+          <Property Name="SUBJECT ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SUBNAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_TBLEXAM_TBLSTUDENTS1">
+          <End Role="TBLSTUDENTS" Type="Self.TBLSTUDENTS" Multiplicity="0..1" />
+          <End Role="TBLEXAM" Type="Self.TBLEXAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSTUDENTS">
+              <PropertyRef Name="STUDENTNUMBER" />
+            </Principal>
+            <Dependent Role="TBLEXAM">
+              <PropertyRef Name="STD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLEXAM_TBLSUBJECTS1">
+          <End Role="TBLSUBJECTS" Type="Self.TBLSUBJECTS" Multiplicity="0..1" />
+          <End Role="TBLEXAM" Type="Self.TBLEXAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSUBJECTS">
+              <PropertyRef Name="SUBJECT ID" />
+            </Principal>
+            <Dependent Role="TBLEXAM">
+              <PropertyRef Name="SUB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbStudentsAndExamsModelStoreContainer">
+          <EntitySet Name="TBLEXAM" EntityType="Self.TBLEXAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSTUDENTS" EntityType="Self.TBLSTUDENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSUBJECTS" EntityType="Self.TBLSUBJECTS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLEXAM_TBLSTUDENTS1" Association="Self.FK_TBLEXAM_TBLSTUDENTS1">
+            <End Role="TBLSTUDENTS" EntitySet="TBLSTUDENTS" />
+            <End Role="TBLEXAM" EntitySet="TBLEXAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLEXAM_TBLSUBJECTS1" Association="Self.FK_TBLEXAM_TBLSUBJECTS1">
+            <End Role="TBLSUBJECTS" EntitySet="TBLSUBJECTS" />
+            <End Role="TBLEXAM" EntitySet="TBLEXAM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbStudentsAndExamsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLEXAM">
+          <Key>
+            <PropertyRef Name="EXGRID" />
+          </Key>
+          <Property Name="EXGRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STD" Type="Int32" />
+          <Property Name="SUB" Type="Int32" />
+          <Property Name="EXAM1" Type="Int16" />
+          <Property Name="EXAM2" Type="Int16" />
+          <Property Name="EXAM3" Type="Int16" />
+          <Property Name="AVRG" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="STAT" Type="Boolean" />
+          <NavigationProperty Name="TBLSTUDENTS" Relationship="Self.FK_TBLEXAM_TBLSTUDENTS1" FromRole="TBLEXAM" ToRole="TBLSTUDENTS" />
+          <NavigationProperty Name="TBLSUBJECTS" Relationship="Self.FK_TBLEXAM_TBLSUBJECTS1" FromRole="TBLEXAM" ToRole="TBLSUBJECTS" />
+        </EntityType>
+        <EntityType Name="TBLSTUDENTS">
+          <Key>
+            <PropertyRef Name="STUDENTNUMBER" />
+          </Key>
+          <Property Name="STUDENTNUMBER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STUDENT_PHOTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLEXAM" Relationship="Self.FK_TBLEXAM_TBLSTUDENTS1" FromRole="TBLSTUDENTS" ToRole="TBLEXAM" />
+        </EntityType>
+        <EntityType Name="TBLSUBJECTS">
+          <Key>
+            <PropertyRef Name="SUBJECT_ID" />
+          </Key>
+          <Property Name="SUBJECT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUBNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLEXAM" Relationship="Self.FK_TBLEXAM_TBLSUBJECTS1" FromRole="TBLSUBJECTS" ToRole="TBLEXAM" />
+        </EntityType>
+        <Association Name="FK_TBLEXAM_TBLSTUDENTS1">
+          <End Role="TBLSTUDENTS" Type="Self.TBLSTUDENTS" Multiplicity="0..1" />
+          <End Role="TBLEXAM" Type="Self.TBLEXAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSTUDENTS">
+              <PropertyRef Name="STUDENTNUMBER" />
+            </Principal>
+            <Dependent Role="TBLEXAM">
+              <PropertyRef Name="STD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLEXAM_TBLSUBJECTS1">
+          <End Role="TBLSUBJECTS" Type="Self.TBLSUBJECTS" Multiplicity="0..1" />
+          <End Role="TBLEXAM" Type="Self.TBLEXAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSUBJECTS">
+              <PropertyRef Name="SUBJECT_ID" />
+            </Principal>
+            <Dependent Role="TBLEXAM">
+              <PropertyRef Name="SUB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbStudentsAndExamsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLEXAM" EntityType="Self.TBLEXAM" />
+          <EntitySet Name="TBLSTUDENTS" EntityType="Self.TBLSTUDENTS" />
+          <EntitySet Name="TBLSUBJECTS" EntityType="Self.TBLSUBJECTS" />
+          <AssociationSet Name="FK_TBLEXAM_TBLSTUDENTS1" Association="Self.FK_TBLEXAM_TBLSTUDENTS1">
+            <End Role="TBLSTUDENTS" EntitySet="TBLSTUDENTS" />
+            <End Role="TBLEXAM" EntitySet="TBLEXAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLEXAM_TBLSUBJECTS1" Association="Self.FK_TBLEXAM_TBLSUBJECTS1">
+            <End Role="TBLSUBJECTS" EntitySet="TBLSUBJECTS" />
+            <End Role="TBLEXAM" EntitySet="TBLEXAM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbStudentsAndExamsModelStoreContainer" CdmEntityContainer="DbStudentsAndExamsEntities">
+          <EntitySetMapping Name="TBLEXAM">
+            <EntityTypeMapping TypeName="DbStudentsAndExamsModel.TBLEXAM">
+              <MappingFragment StoreEntitySet="TBLEXAM">
+                <ScalarProperty Name="EXGRID" ColumnName="EXGRID" />
+                <ScalarProperty Name="STD" ColumnName="STD" />
+                <ScalarProperty Name="SUB" ColumnName="SUB" />
+                <ScalarProperty Name="EXAM1" ColumnName="EXAM1" />
+                <ScalarProperty Name="EXAM2" ColumnName="EXAM2" />
+                <ScalarProperty Name="EXAM3" ColumnName="EXAM3" />
+                <ScalarProperty Name="AVRG" ColumnName="AVRG" />
+                <ScalarProperty Name="STAT" ColumnName="STAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSTUDENTS">
+            <EntityTypeMapping TypeName="DbStudentsAndExamsModel.TBLSTUDENTS">
+              <MappingFragment StoreEntitySet="TBLSTUDENTS">
+                <ScalarProperty Name="STUDENTNUMBER" ColumnName="STUDENTNUMBER" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="STUDENT_PHOTO" ColumnName="STUDENT-PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSUBJECTS">
+            <EntityTypeMapping TypeName="DbStudentsAndExamsModel.TBLSUBJECTS">
+              <MappingFragment StoreEntitySet="TBLSUBJECTS">
+                <ScalarProperty Name="SUBJECT_ID" ColumnName="SUBJECT ID" />
+                <ScalarProperty Name="SUBNAME" ColumnName="SUBNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

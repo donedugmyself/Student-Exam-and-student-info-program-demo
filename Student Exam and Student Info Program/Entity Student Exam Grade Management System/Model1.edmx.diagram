@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6295e26e10c4374b39dc8f911335b04" Name="Diagram1">
+        <EntityTypeShape EntityType="DbStudentsAndExamsModel.TBLEXAM" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbStudentsAndExamsModel.TBLSTUDENTS" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbStudentsAndExamsModel.TBLSUBJECTS" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="DbStudentsAndExamsModel.FK_TBLEXAM_TBLSTUDENTS1" ManuallyRouted="false" />
+        <AssociationConnector Association="DbStudentsAndExamsModel.FK_TBLEXAM_TBLSUBJECTS1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

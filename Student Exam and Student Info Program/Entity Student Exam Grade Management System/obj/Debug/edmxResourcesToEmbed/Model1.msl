@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbStudentsAndExamsModelStoreContainer" CdmEntityContainer="DbStudentsAndExamsEntities">
+    <EntitySetMapping Name="TBLEXAM">
+      <EntityTypeMapping TypeName="DbStudentsAndExamsModel.TBLEXAM">
+        <MappingFragment StoreEntitySet="TBLEXAM">
+          <ScalarProperty Name="EXGRID" ColumnName="EXGRID" />
+          <ScalarProperty Name="STD" ColumnName="STD" />
+          <ScalarProperty Name="SUB" ColumnName="SUB" />
+          <ScalarProperty Name="EXAM1" ColumnName="EXAM1" />
+          <ScalarProperty Name="EXAM2" ColumnName="EXAM2" />
+          <ScalarProperty Name="EXAM3" ColumnName="EXAM3" />
+          <ScalarProperty Name="AVRG" ColumnName="AVRG" />
+          <ScalarProperty Name="STAT" ColumnName="STAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSTUDENTS">
+      <EntityTypeMapping TypeName="DbStudentsAndExamsModel.TBLSTUDENTS">
+        <MappingFragment StoreEntitySet="TBLSTUDENTS">
+          <ScalarProperty Name="STUDENTNUMBER" ColumnName="STUDENTNUMBER" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+          <ScalarProperty Name="STUDENT_PHOTO" ColumnName="STUDENT-PHOTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSUBJECTS">
+      <EntityTypeMapping TypeName="DbStudentsAndExamsModel.TBLSUBJECTS">
+        <MappingFragment StoreEntitySet="TBLSUBJECTS">
+          <ScalarProperty Name="SUBJECT_ID" ColumnName="SUBJECT ID" />
+          <ScalarProperty Name="SUBNAME" ColumnName="SUBNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

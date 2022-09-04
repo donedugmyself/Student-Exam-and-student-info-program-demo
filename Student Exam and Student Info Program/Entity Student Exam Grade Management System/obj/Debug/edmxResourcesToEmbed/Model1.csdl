@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbStudentsAndExamsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBLEXAM">
+    <Key>
+      <PropertyRef Name="EXGRID" />
+    </Key>
+    <Property Name="EXGRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STD" Type="Int32" />
+    <Property Name="SUB" Type="Int32" />
+    <Property Name="EXAM1" Type="Int16" />
+    <Property Name="EXAM2" Type="Int16" />
+    <Property Name="EXAM3" Type="Int16" />
+    <Property Name="AVRG" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="STAT" Type="Boolean" />
+    <NavigationProperty Name="TBLSTUDENTS" Relationship="Self.FK_TBLEXAM_TBLSTUDENTS1" FromRole="TBLEXAM" ToRole="TBLSTUDENTS" />
+    <NavigationProperty Name="TBLSUBJECTS" Relationship="Self.FK_TBLEXAM_TBLSUBJECTS1" FromRole="TBLEXAM" ToRole="TBLSUBJECTS" />
+  </EntityType>
+  <EntityType Name="TBLSTUDENTS">
+    <Key>
+      <PropertyRef Name="STUDENTNUMBER" />
+    </Key>
+    <Property Name="STUDENTNUMBER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STUDENT_PHOTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLEXAM" Relationship="Self.FK_TBLEXAM_TBLSTUDENTS1" FromRole="TBLSTUDENTS" ToRole="TBLEXAM" />
+  </EntityType>
+  <EntityType Name="TBLSUBJECTS">
+    <Key>
+      <PropertyRef Name="SUBJECT_ID" />
+    </Key>
+    <Property Name="SUBJECT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SUBNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLEXAM" Relationship="Self.FK_TBLEXAM_TBLSUBJECTS1" FromRole="TBLSUBJECTS" ToRole="TBLEXAM" />
+  </EntityType>
+  <Association Name="FK_TBLEXAM_TBLSTUDENTS1">
+    <End Role="TBLSTUDENTS" Type="Self.TBLSTUDENTS" Multiplicity="0..1" />
+    <End Role="TBLEXAM" Type="Self.TBLEXAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSTUDENTS">
+        <PropertyRef Name="STUDENTNUMBER" />
+      </Principal>
+      <Dependent Role="TBLEXAM">
+        <PropertyRef Name="STD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLEXAM_TBLSUBJECTS1">
+    <End Role="TBLSUBJECTS" Type="Self.TBLSUBJECTS" Multiplicity="0..1" />
+    <End Role="TBLEXAM" Type="Self.TBLEXAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSUBJECTS">
+        <PropertyRef Name="SUBJECT_ID" />
+      </Principal>
+      <Dependent Role="TBLEXAM">
+        <PropertyRef Name="SUB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbStudentsAndExamsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBLEXAM" EntityType="Self.TBLEXAM" />
+    <EntitySet Name="TBLSTUDENTS" EntityType="Self.TBLSTUDENTS" />
+    <EntitySet Name="TBLSUBJECTS" EntityType="Self.TBLSUBJECTS" />
+    <AssociationSet Name="FK_TBLEXAM_TBLSTUDENTS1" Association="Self.FK_TBLEXAM_TBLSTUDENTS1">
+      <End Role="TBLSTUDENTS" EntitySet="TBLSTUDENTS" />
+      <End Role="TBLEXAM" EntitySet="TBLEXAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLEXAM_TBLSUBJECTS1" Association="Self.FK_TBLEXAM_TBLSUBJECTS1">
+      <End Role="TBLSUBJECTS" EntitySet="TBLSUBJECTS" />
+      <End Role="TBLEXAM" EntitySet="TBLEXAM" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

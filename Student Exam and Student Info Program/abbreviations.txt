@@ -1,0 +1,7 @@
+abbreviations
+TBLEXAM
+EXGRID = ExamGradeID
+STD = Student name in exams grade panel
+SUB = Subject name in exams grade panel
+AVRG = Exams average
+STAT = Status (Passed or failed)

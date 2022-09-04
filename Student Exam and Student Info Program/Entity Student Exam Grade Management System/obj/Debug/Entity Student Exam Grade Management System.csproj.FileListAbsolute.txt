@@ -1,0 +1,16 @@
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\Entity Student Exam Grade Management System.exe.config
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\Entity Student Exam Grade Management System.exe
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\Entity Student Exam Grade Management System.pdb
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\EntityFramework.dll
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\EntityFramework.xml
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.csproj.AssemblyReference.cache
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.csproj.SuggestedBindingRedirects.cache
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity_Student_Exam_Grade_Management_System.Form1.resources
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity_Student_Exam_Grade_Management_System.Properties.Resources.resources
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.csproj.GenerateResource.cache
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.csproj.CoreCompileInputs.cache
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.csproj.CopyComplete
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.exe
+C:\Users\Casper\source\repos\Entity Student Exam Grade Management System\obj\Debug\Entity Student Exam Grade Management System.pdb
